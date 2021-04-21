@@ -26,6 +26,8 @@ export class User {
   data_atualizacao: string;
   @Prop()
   ultimo_login: string;
+  @Prop()
+  token: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User).pre<UserDocument>(

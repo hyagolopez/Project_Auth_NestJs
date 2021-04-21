@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
+
 import { UsersService } from '../users/users.service';
 
 @Injectable()
@@ -11,22 +13,23 @@ export class AuthService {
 
   async validateUserSignIn(email: string, password: string): Promise<any> {
     const user = await this.usersService.selectByEmailFromUsers(email);
-    if (user && user.senha === password) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { senha, ...result } = user;
-      return result;
-    }
-    return null;
-  }
-
-  async validateUserSignUp(userAuth: any): Promise<any> {
-    const user = await this.usersService.selectByEmailFromUsers(userAuth.id);
     if (user) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { senha, ...result } = user;
-      return result;
+      const validatePassword = await bcrypt.compareSync(password, user.senha);
+      if (validatePassword) {
+        const payload = { email: user.email, sub: user.id };
+        await this.usersService.tokenAndDateUpdateBasedOnEmail(
+          user.id,
+          this.jwtService.sign(payload),
+        );
+        const userUpdate = await this.usersService.selectByEmailFromUsers(
+          user.email,
+        );
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        return userUpdate;
+      }
+      return { mensagem: 'Usuário e/ou senha inválidos.' };
     }
-    return null;
+    return { mensagem: 'Usuário e/ou senha inválidos.' };
   }
 
   async signUp(userBody: any) {
@@ -37,19 +40,19 @@ export class AuthService {
       const newUser = await await this.usersService.createUser(userBody);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { senha, ...user } = JSON.parse(JSON.stringify(newUser));
-      const payload = { nome: newUser.nome, sub: newUser.id };
       return {
-        usuario: JSON.parse(JSON.stringify(user)),
-        token: this.jwtService.sign(payload),
+        usuario: user,
       };
     }
     return { mensagem: 'E-mail já existente.' };
   }
 
-  async signIn(user: any) {
-    const payload = { username: user.username, sub: user.userId };
+  async signIn(userObject: any) {
+    if (userObject.mensagem) return userObject;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { senha, ...user } = userObject;
     return {
-      access_token: this.jwtService.sign(payload),
+      usuario: user,
     };
   }
 }
