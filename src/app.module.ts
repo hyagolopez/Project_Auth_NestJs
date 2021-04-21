@@ -9,7 +9,7 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://root:grFLfxIivHIebF5S@tid2.78uyk.mongodb.net/auth?retryWrites=true&w=majority',
+      'mongodb+srv://<user>:<password>@tid2.78uyk.mongodb.net/<database>?retryWrites=true&w=majority',
       { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true },
     ),
     AuthModule,
