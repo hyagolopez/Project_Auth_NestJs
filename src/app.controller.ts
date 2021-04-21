@@ -1,12 +1,16 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Post, Request, HttpStatus, Res } from '@nestjs/common';
+import { Response } from 'express';
+import { AuthService } from './auth/auth.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly authService: AuthService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  //@UseGuards(LocalAuthGuard)
+  @Post('singup')
+  async signUp(@Request() req, @Res() res: Response) {
+    const result = await this.authService.signUp(req.body);
+    if (result.mensagem) return res.status(HttpStatus.BAD_REQUEST).send(result);
+    return res.status(HttpStatus.CREATED).send(result);
   }
 }
