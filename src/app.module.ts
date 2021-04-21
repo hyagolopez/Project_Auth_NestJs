@@ -6,6 +6,8 @@ import { UsersModule } from './users/users.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+//Linha 12 adicionar a URL de acesso ao banco Mongodb
+
 @Module({
   imports: [
     MongooseModule.forRoot(
