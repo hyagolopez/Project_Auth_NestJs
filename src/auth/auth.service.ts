@@ -39,7 +39,7 @@ export class AuthService {
     if (!checkExistingUser) {
       const newUser = await await this.usersService.createUser(userBody);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { senha, ...user } = JSON.parse(JSON.stringify(newUser));
+      const { __v, _id, senha, ...user } = JSON.parse(JSON.stringify(newUser));
       return {
         usuario: user,
       };
@@ -50,7 +50,7 @@ export class AuthService {
   async signIn(userObject: any) {
     if (userObject.mensagem) return userObject;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { senha, ...user } = userObject;
+    const { __v, _id, senha, ...user } = userObject;
     return {
       usuario: user,
     };

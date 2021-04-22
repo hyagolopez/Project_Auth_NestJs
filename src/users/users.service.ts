@@ -64,7 +64,8 @@ export class UsersService {
   async requestBasedOnUserId(id: string) {
     const checkUser = await this.selectByIdFromUsers(id);
     if (!checkUser) return { mensagem: 'Id do usuário inválido.' };
-    const { senha, ...user } = JSON.parse(JSON.stringify(checkUser));
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { __v, _id, senha, ...user } = JSON.parse(JSON.stringify(checkUser));
     return user;
   }
 }
