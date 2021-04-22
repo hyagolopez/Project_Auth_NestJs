@@ -111,7 +111,7 @@ curl --request GET \
 ## Test | Teste
 
 - Don't forget to change the test values ​​to perform various tests
-- Don't forget to change the test values ​​to perform various tests
+- Não se esqueça de alterar os valores de teste para realizar vários testes
 
 ```bash
 # unit tests
