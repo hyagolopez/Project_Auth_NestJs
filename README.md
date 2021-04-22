@@ -7,8 +7,8 @@
 
 ## Reminder | Lembrete
 
-- Before running the application, create a '.env' file to place the url of the mongoDb bank and the secret JWT password.
-- Antes de rodar aplicação, crie uma arquivo '.env' para colocar a url  do banco mongoDb e a senha secreta do JWT.
+- Before running the application, create a '.env' file to place the url of the mongoDb bank and the secret JWT password. Because without the information from the database, the application cannot run.
+- Antes de rodar aplicação, crie uma arquivo '.env' para colocar a url  do banco mongoDb e a senha secreta do JWT. Pois, sem a informação do banco de dados a aplicação não pode rodar.
 
 - Name of the environment variables.
 - Nome das variável de ambiente.
@@ -64,10 +64,12 @@ $ yarn start:prod
 - Routes for execution.
 - Rotas para execução.
 
-/sign-up
-/sign-in
-/usuario/:id
+{POST} /sign-up
+{POST} /sign-in
+{GET} /usuario/:id
 
+- At the root of the project there is a file called "sign-Up.json" containing the body structure of the json type to perform the request on the route "/sign-up".
+- Na raiz do projeto existe um arquivo chamado "sign-Up.json" contendo a estrutura do body do tipo json para realizar a requisição na rota "/sign-up".
 
 ## Test | Teste
 
