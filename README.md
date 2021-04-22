@@ -61,12 +61,49 @@ $ yarn start:dev
 # production mode
 $ yarn start:prod
 ```
+
 - Routes for execution.
 - Rotas para execução.
 
 {POST} /sign-up
+
+```bash
+curl --request POST \
+  --url http://localhost:3000/sign-up \
+  --header 'Content-Type: application/json' \
+  --data '{ 
+	"nome": "name", 
+	"email": "email@gmail.com", 
+	"senha": "password", 
+	"telefones": [ 
+		 { 
+			 "numero": "123456789", 
+			 "ddd": "11" 
+		 }
+	] 
+} 
+'
+```
+
 {POST} /sign-in
+
+```bash
+curl --request POST \
+  --url http://localhost:3000/sign-in \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"email": "email@email.com", 
+	"senha": "password"
+}'
+```
+
 {GET} /usuario/:id
+
+```bash
+curl --request GET \
+  --url http://localhost:3000/usuario/12c2dda0-39fa-4797-b7f0-8574e8547879 \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN0cmluMmcyMjEyMzIiLCJzdWIiOiJlZTUzZjI1Yi1lZTExLTRiZTEtYmZmYy1hNTg0MzNlYjlkM2UiLCJpYXQiOjE2MTkwNjI1MzAsImV4cCI6MTYxOTA2NDMzMH0.pdtSL4041zLXoIm_4U5Z6qJktd3Xe6jlftlz2wj5U8k'
+```
 
 - At the root of the project there is a file called "sign-Up.json" containing the body structure of the json type to perform the request on the route "/sign-up".
 - Na raiz do projeto existe um arquivo chamado "sign-Up.json" contendo a estrutura do body do tipo json para realizar a requisição na rota "/sign-up".
