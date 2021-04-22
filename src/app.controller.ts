@@ -1,6 +1,7 @@
 import {
   Controller,
   Post,
+  Get,
   Request,
   HttpStatus,
   Res,
@@ -13,6 +14,11 @@ import { LocalAuthGuard } from './auth/guards/local-auth.guard';
 @Controller()
 export class AppController {
   constructor(private readonly authService: AuthService) {}
+
+  @Get()
+  async statusServer() {
+    return { message: 'ON Server!' };
+  }
 
   @Post('sign-up')
   async signUp(@Request() req, @Res() res: Response) {

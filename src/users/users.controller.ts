@@ -5,19 +5,25 @@ import {
   HttpStatus,
   Res,
   UseGuards,
+  Param,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
-//import { AuthService } from './auth/auth.service';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
-@Controller()
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { UsersService } from './users.service';
+
+@Controller('usuario')
 export class UsersController {
+  constructor(private readonly userService: UsersService) {}
+
   @UseGuards(JwtAuthGuard)
-  @Get('usuario')
-  getProfile(@Req() req, @Res() res: Response) {
+  @Get(':id')
+  async getProfile(@Param() params, @Req() req, @Res() res: Response) {
     const checkValidation = req.user;
     if (checkValidation.mensagem)
       return res.status(HttpStatus.UNAUTHORIZED).send(checkValidation);
-    return res.status(HttpStatus.OK).send(req.query);
+    const result = await this.userService.requestBasedOnUserId(params.id);
+    if (result.mensagem) return res.status(HttpStatus.NO_CONTENT);
+    return res.status(HttpStatus.OK).send(result);
   }
 }

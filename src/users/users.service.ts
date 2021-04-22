@@ -60,4 +60,11 @@ export class UsersService {
       { ultimo_login: dateLocal.format() },
     );
   }
+
+  async requestBasedOnUserId(id: string) {
+    const checkUser = await this.selectByIdFromUsers(id);
+    if (!checkUser) return { mensagem: 'Id do usuário inválido.' };
+    const { senha, ...user } = JSON.parse(JSON.stringify(checkUser));
+    return user;
+  }
 }
