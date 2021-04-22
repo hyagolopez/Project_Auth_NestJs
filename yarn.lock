@@ -599,7 +599,7 @@
     "webpack" "5.28.0"
     "webpack-node-externals" "2.5.2"
 
-"@nestjs/common@^6.0.0 || ^7.0.0", "@nestjs/common@^6.10.11 || ^7.0.0", "@nestjs/common@^7.0.0", "@nestjs/common@^7.6.15":
+"@nestjs/common@^6.0.0 || ^7.0.0", "@nestjs/common@^6.10.0 || ^7.0.0", "@nestjs/common@^6.10.11 || ^7.0.0", "@nestjs/common@^7.0.0", "@nestjs/common@^7.6.15":
   "integrity" "sha512-H/3Nk7M02Fc4YN9St05i34gZKVuzE54gd5eXAX6WwisqU5fQ00kss1pYGbltjb2QGu3A/fpO1MdYEwOA18Z/VQ=="
   "resolved" "https://registry.npmjs.org/@nestjs/common/-/common-7.6.15.tgz"
   "version" "7.6.15"
@@ -607,6 +607,18 @@
     "axios" "0.21.1"
     "iterare" "1.2.1"
     "tslib" "2.1.0"
+    "uuid" "8.3.2"
+
+"@nestjs/config@^0.6.3":
+  "integrity" "sha512-JxvvUpmH0/WOrTB+zh8dEkxSUQXhB7V3d/qeQXyCnMiEFjaq89+fNFztpWjz4DlOfdS4/eYTzIEy9PH2uGnfzA=="
+  "resolved" "https://registry.npmjs.org/@nestjs/config/-/config-0.6.3.tgz"
+  "version" "0.6.3"
+  dependencies:
+    "dotenv" "8.2.0"
+    "dotenv-expand" "5.1.0"
+    "lodash.get" "4.4.2"
+    "lodash.has" "4.5.2"
+    "lodash.set" "4.3.2"
     "uuid" "8.3.2"
 
 "@nestjs/core@^6.0.0 || ^7.0.0", "@nestjs/core@^7.0.0", "@nestjs/core@^7.6.15":
@@ -2281,6 +2293,16 @@
   "version" "2.0.1"
   dependencies:
     "webidl-conversions" "^5.0.0"
+
+"dotenv-expand@5.1.0":
+  "integrity" "sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA=="
+  "resolved" "https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-5.1.0.tgz"
+  "version" "5.1.0"
+
+"dotenv@8.2.0":
+  "integrity" "sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-8.2.0.tgz"
+  "version" "8.2.0"
 
 "ecc-jsbn@~0.1.1":
   "integrity" "sha1-OoOpBOVDUyh4dMVkt1SThoSamMk="
@@ -4193,6 +4215,16 @@
   "resolved" "https://registry.npmjs.org/lodash.flatten/-/lodash.flatten-4.4.0.tgz"
   "version" "4.4.0"
 
+"lodash.get@4.4.2":
+  "integrity" "sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk="
+  "resolved" "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz"
+  "version" "4.4.2"
+
+"lodash.has@4.5.2":
+  "integrity" "sha1-0Z9NwQlQWMzL4rDN9O4P5Ko3yGI="
+  "resolved" "https://registry.npmjs.org/lodash.has/-/lodash.has-4.5.2.tgz"
+  "version" "4.5.2"
+
 "lodash.includes@^4.3.0":
   "integrity" "sha1-YLuYqHy5I8aMoeUTJUgzFISfVT8="
   "resolved" "https://registry.npmjs.org/lodash.includes/-/lodash.includes-4.3.0.tgz"
@@ -4227,6 +4259,11 @@
   "integrity" "sha1-DdOXEhPHxW34gJd9UEyI+0cal6w="
   "resolved" "https://registry.npmjs.org/lodash.once/-/lodash.once-4.1.1.tgz"
   "version" "4.1.1"
+
+"lodash.set@4.3.2":
+  "integrity" "sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM="
+  "resolved" "https://registry.npmjs.org/lodash.set/-/lodash.set-4.3.2.tgz"
+  "version" "4.3.2"
 
 "lodash.toarray@^4.4.0":
   "integrity" "sha1-JMS/zWsvuji/0FlNsRedjptlZWE="

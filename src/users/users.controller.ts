@@ -1,12 +1,12 @@
 import {
   Controller,
   Get,
-  Request,
+  Req,
   HttpStatus,
   Res,
   UseGuards,
 } from '@nestjs/common';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 //import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
@@ -14,10 +14,10 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 export class UsersController {
   @UseGuards(JwtAuthGuard)
   @Get('usuario')
-  getProfile(@Request() req, @Res() res: Response) {
-    const result = req.user;
-    if (result.mensagem)
-      return res.status(HttpStatus.UNAUTHORIZED).send(result);
-    return res.status(HttpStatus.OK).send(result);
+  getProfile(@Req() req, @Res() res: Response) {
+    const checkValidation = req.user;
+    if (checkValidation.mensagem)
+      return res.status(HttpStatus.UNAUTHORIZED).send(checkValidation);
+    return res.status(HttpStatus.OK).send(req.query);
   }
 }
